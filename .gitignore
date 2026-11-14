@@ -1,0 +1,8 @@
+*.slnx
+*.vcxproj
+*.filters
+*.user
+
+# folders
+Cafe Noir/
+fonts/
