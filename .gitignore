@@ -1,8 +1,26 @@
+# Visual Studio project files
 *.slnx
 *.vcxproj
 *.filters
 *.user
 
-# folders
+# imgui files
+imconfig.h
+imgui.cpp
+imgui.h
+imgui_demo.cpp
+imgui_draw.cpp
+imgui_internal.h
+imgui_tables.cpp
+imgui_widgets.cpp
+imstb_rectpack.cpp
+imstb_textedit.h
+imstb_truetype.h
+
+
+
+# Directories
 Cafe Noir/
+x64/
 fonts/
+backends/
