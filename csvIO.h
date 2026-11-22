@@ -1,16 +1,18 @@
 #pragma once
+#include "inputPanelUI.h" // struct Customer
+#include <cstdio> // FILE
+#include <cstring> // strcmp
 
-struct customerData
-{
-    int zipcode, age, item;
-};
+#define MAX_LINE 100
+
+struct Customer;
 
 bool openFile();
 
 int getNumOfCustomer();
 
-customerData readData(int index);
+Customer readData(int index);
 
-void writeData(customerData customer);
+void writeData(Customer customer);
 
 void closeFile();

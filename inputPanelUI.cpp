@@ -1,10 +1,7 @@
-#include "CustomerInput.h"
-#include "InputBackend.h"
-#include "Data.h"
-#include "imgui.h"
-#include <string>
-
-extern ImFont* numFont;
+#pragma once
+#include "inputPanelUI.h"
+#include "inputChecking.h"
+#include "settings.h"
 
 void RenderCustomerInput(Customer customers[], int& customerCount)
 {
@@ -28,17 +25,6 @@ void RenderCustomerInput(Customer customers[], int& customerCount)
         true
     );
 
-    ImGui::SetWindowFontScale(1.35f);
-
-    ImGui::Text("Customer Information");
-
-    ImGui::SetWindowFontScale(1.15f);
-
-    ImGui::Text("Please enter the customer details below.");
-
-    ImGui::Separator();
-    ImGui::Dummy(ImVec2(0, 4));
-
     if (!sessionEnded)
     {
         // ZIP CODE
@@ -48,7 +34,7 @@ void RenderCustomerInput(Customer customers[], int& customerCount)
 
         ImGui::PushItemWidth(-1);
 
-        if (numFont) ImGui::PushFont(numFont);
+        if (Global::numFont) ImGui::PushFont(Global::numFont);
 
         bool zipEnter = ImGui::InputInt(
             "##ZIP",
@@ -58,7 +44,7 @@ void RenderCustomerInput(Customer customers[], int& customerCount)
             ImGuiInputTextFlags_EnterReturnsTrue
         );
 
-        if (numFont) ImGui::PopFont();
+        if (Global::numFont) ImGui::PopFont();
 
         ImGui::PopItemWidth();
        
@@ -74,7 +60,7 @@ void RenderCustomerInput(Customer customers[], int& customerCount)
 
         ImGui::PushItemWidth(-1);
 
-        if (numFont) ImGui::PushFont(numFont);
+        if (Global::numFont) ImGui::PushFont(Global::numFont);
 
         bool ageEnter = ImGui::InputInt(
             "##Age",
@@ -84,7 +70,7 @@ void RenderCustomerInput(Customer customers[], int& customerCount)
             ImGuiInputTextFlags_EnterReturnsTrue
         );
 
-        if (numFont) ImGui::PopFont();
+        if (Global::numFont) ImGui::PopFont();
 
         ImGui::PopItemWidth();
        
@@ -100,7 +86,7 @@ void RenderCustomerInput(Customer customers[], int& customerCount)
 
         ImGui::PushItemWidth(-1);
 
-        if (numFont) ImGui::PushFont(numFont);
+        if (Global::numFont) ImGui::PushFont(Global::numFont);
 
         ImGui::InputInt(
             "##Items",
@@ -110,7 +96,7 @@ void RenderCustomerInput(Customer customers[], int& customerCount)
             ImGuiInputTextFlags_EnterReturnsTrue
         );
 
-        if (numFont) ImGui::PopFont();
+        if (Global::numFont) ImGui::PopFont();
 
         ImGui::PopItemWidth();
         
@@ -141,11 +127,11 @@ void RenderCustomerInput(Customer customers[], int& customerCount)
                 items,
                 message))
             {
-                customerData newCustomer;
+                Customer newCustomer;
 
-                newCustomer.zipcode = zipCode;
+                newCustomer.zipCode = zipCode;
                 newCustomer.age = age;
-                newCustomer.item = items;
+                newCustomer.items = items;
 
                 if (openFile())
                 {

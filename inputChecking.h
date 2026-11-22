@@ -1,6 +1,5 @@
 #pragma once
-
-#include "CustomerInput.h"
+#include "inputPanelUI.h"
 #include <string>
 
 bool AddCustomer(
