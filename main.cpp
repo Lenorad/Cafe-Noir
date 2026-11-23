@@ -3,6 +3,8 @@
 #include <iostream> // std::cout
 #include "settings.h"
 #include "dashboard.h"
+#include "analytics.h"
+#include "records.h"
 
 #include "imgui.h"
 #include "imgui_impl_sdl3.h"
@@ -76,8 +78,8 @@ int main(int argc, char* argv[]) {
         std::cout << "Segoe UI Number Font Loaded Successfully!" << std::endl;
     }
 
-  
     Settings::SetupCoffeeTheme();
+
     if (Settings::Load_csv())
     {
         std::cout << "'data.csv' Loaded Succefully!" << std::endl;
@@ -94,8 +96,6 @@ int main(int argc, char* argv[]) {
     ImGui_ImplSDL3_InitForOpenGL(window, gl_context);
     ImGui_ImplOpenGL3_Init("#version 130");
 
-    Customer customers[MAX_CUSTOMERS] = {};
-    int customerCount = 0;
     bool done = false;
     while (!done) {
         SDL_Event event;
@@ -199,15 +199,23 @@ int main(int argc, char* argv[]) {
 
         ImGui::SetWindowFontScale(1.2f);
 
-        ImGui::Button("Dashboard", ImVec2(-1, 45));
+        if (ImGui::Button("Dashboard", ImVec2(-1, 45)))
+            Global::currentPage = Pages::Dashboard;
 
         ImGui::Spacing();
 
-        ImGui::Button("Customers", ImVec2(-1, 45));
+        if (ImGui::Button("Records", ImVec2(-1, 45)))
+            Global::currentPage = Pages::Records;
 
         ImGui::Spacing();
 
-        ImGui::Button("Analysis", ImVec2(-1, 45));
+        if (ImGui::Button("Analytics", ImVec2(-1, 45)))
+            Global::currentPage = Pages::Analytics;
+
+        ImGui::Spacing();
+
+        if (ImGui::Button("Settings", ImVec2(-1, 45)))
+            Global::currentPage = Pages::Settings;
 
         ImGui::SetWindowFontScale(1.0f);
 
@@ -227,8 +235,15 @@ int main(int argc, char* argv[]) {
         // =========================
         // MAIN CONTENT
         // =========================
-        Load_dashboardPage();
-        
+        if (Global::currentPage == Pages::Dashboard)
+            Load_dashboardPage();
+        else if (Global::currentPage == Pages::Records)
+            Load_recordsPage();
+        else if (Global::currentPage == Pages::Analytics)
+            Load_analyticsPage();
+        else if (Global::currentPage == Pages::Settings)
+            Load_settingsPage();
+
         ImGui::End();
         
         // Rendering

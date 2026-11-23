@@ -2,10 +2,11 @@
 #include "csvIO.h"
 
 namespace Global {
-ImFont* gBoldFont = nullptr;
-ImFont* numFont = nullptr;
-int customerCount = 0;
-Customer customers[MAX_CUSTOMERS] = {};
+	ImFont* gBoldFont = nullptr;
+	ImFont* numFont = nullptr;
+	int customerCount = 0;
+	Pages currentPage = Pages::Dashboard;
+	Customer customers[MAX_CUSTOMERS] = {};
 }
 
 namespace Settings {
@@ -115,4 +116,17 @@ namespace Settings {
 			return false;
 		}
 	}
+}
+
+void Load_settingsPage()
+{
+	ImGui::BeginChild(
+		"Settings",
+		ImVec2(0, 0),
+		true
+	);
+	ImGui::Text("This is Settings Page");
+	ImGui::SameLine();
+	ImGui::TextDisabled("(underdevelopment)");
+	ImGui::EndChild();
 }

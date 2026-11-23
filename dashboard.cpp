@@ -13,7 +13,7 @@ void Load_dashboardPage()
     static ImGuiTableFlags column_layout = ImGuiTableFlags_BordersInnerV;
     if (ImGui::BeginTable("Double Column Layout", 2, column_layout))
     {
-        ImGui::TableSetupColumn("first column", ImGuiTableColumnFlags_WidthFixed, ImGui::GetContentRegionAvail().x * 0.33f);
+        ImGui::TableSetupColumn("first column", ImGuiTableColumnFlags_WidthFixed, ImGui::GetContentRegionAvail().x * 0.36f);
         ImGui::TableNextRow();
         
         ImGui::TableSetColumnIndex(0);
