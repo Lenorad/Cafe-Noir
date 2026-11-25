@@ -48,35 +48,44 @@ int main(int argc, char* argv[]) {
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
     // Load Fonts
-    Global::gBoldFont = io.Fonts->AddFontFromFileTTF(
-        "fonts/georgiab.ttf",
-        16.0f
-    );
+    if (Settings::Load_fonts(io))
+    {
+        std::cout << "Fonts Loaded Succefully!" << std::endl;
+    }
+    else 
+    {
+        std::cout << "Fonts Cannot be Loaded" << std::endl;
+        return EXIT_FAILURE;
+    }
+    //Global::gBoldFont = io.Fonts->AddFontFromFileTTF(
+    //    "fonts/georgiab.ttf",
+    //    16.0f
+    //);
 
-    if (Global::gBoldFont == nullptr)
-    {
-        std::cout << "Georgia Bold Font Loading Failed!" << std::endl;
-        return -1;
-    }
-    else
-    {
-        std::cout << "Georgia Bold Font Loaded Successfully!" << std::endl;
-    }
+    //if (Global::gBoldFont == nullptr)
+    //{
+    //    std::cout << "Georgia Bold Font Loading Failed!" << std::endl;
+    //    return -1;
+    //}
+    //else
+    //{
+    //    std::cout << "Georgia Bold Font Loaded Successfully!" << std::endl;
+    //}
 
-    Global::numFont = io.Fonts->AddFontFromFileTTF(
-        "fonts/segoeui.ttf",
-        18.0f
-    );
+    //Global::numFont = io.Fonts->AddFontFromFileTTF(
+    //    "fonts/segoeui.ttf",
+    //    18.0f
+    //);
 
-    if (Global::numFont == nullptr)
-    {
-        std::cout << "Segoe UI Number Font Loading Failed!" << std::endl;
-        return -1;
-    }
-    else
-    {
-        std::cout << "Segoe UI Number Font Loaded Successfully!" << std::endl;
-    }
+    //if (Global::numFont == nullptr)
+    //{
+    //    std::cout << "Segoe UI Number Font Loading Failed!" << std::endl;
+    //    return -1;
+    //}
+    //else
+    //{
+    //    std::cout << "Segoe UI Number Font Loaded Successfully!" << std::endl;
+    //}
 
     Settings::SetupCoffeeTheme();
 

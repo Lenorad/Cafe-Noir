@@ -92,8 +92,37 @@ namespace Settings {
 			ImVec4(0.55f, 0.35f, 0.22f, 1.0f);
 	}
 
-	bool Load_fonts()
+	bool Load_fonts(ImGuiIO& io)
 	{
+		Global::gBoldFont = io.Fonts->AddFontFromFileTTF(
+			"fonts/georgiab.ttf",
+			16.0f
+		);
+
+		if (Global::gBoldFont == nullptr)
+		{
+			std::cout << "Georgia Bold Font Loading Failed!" << std::endl;
+			return false;
+		}
+		else
+		{
+			std::cout << "Georgia Bold Font Loaded Successfully!" << std::endl;
+		}
+
+		Global::numFont = io.Fonts->AddFontFromFileTTF(
+			"fonts/segoeui.ttf",
+			18.0f
+		);
+
+		if (Global::numFont == nullptr)
+		{
+			std::cout << "Segoe UI Number Font Loading Failed!" << std::endl;
+			return false;
+		}
+		else
+		{
+			std::cout << "Segoe UI Number Font Loaded Successfully!" << std::endl;
+		}
 		return true;
 	}
 

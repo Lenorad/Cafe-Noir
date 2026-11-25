@@ -1,6 +1,7 @@
 #pragma once
 #include "imgui.h"
 #include "inputPanelUI.h" //  struct Customer
+#include <iostream>
 
 inline const int MAX_CUSTOMERS = 128;
 
@@ -26,6 +27,6 @@ namespace Global {
 
 namespace Settings {
 	void SetupCoffeeTheme();
-	bool Load_fonts();
+	bool Load_fonts(ImGuiIO&);
 	bool Load_csv();
 }
