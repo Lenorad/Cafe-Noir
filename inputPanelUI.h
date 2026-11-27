@@ -1,12 +1,11 @@
 #pragma once
-
-const int MAX_CUSTOMERS = 100;
+#include "csvIO.h"
+#include "imgui.h"
+#include <string>
 
 struct Customer
 {
-    int zipCode;
-    int age;
-    int items;
+    int zipCode, age, items;
 };
 
 void RenderCustomerInput(

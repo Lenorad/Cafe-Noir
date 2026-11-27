@@ -1,4 +1,5 @@
-#include "InputBackend.h"
+#include "inputchecking.h"
+#include "settings.h"
 
 bool AddCustomer(
     Customer customers[],
